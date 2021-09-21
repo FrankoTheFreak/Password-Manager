@@ -88,7 +88,9 @@ This function stores the data related to apps and passwords entered by the user.
 ```
 This function clears all the content present in encoded and decoded file.
 
+### Screenshot
 
+![ss_op](https://user-images.githubusercontent.com/90572543/134199524-6f37f123-240b-4945-9ae4-431d2fa669b0.PNG)
 
 ### Conclusion
 
