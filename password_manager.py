@@ -1,22 +1,10 @@
-''' Password Manager '''
+'''---------------------------------------Start of code---------------------------------------'''
 
-''' 
-    Thought Process
-- Firstly ask the user for the password that will further allow use of password manager
-- ask the user for mode which are view,add,clear and quit
-- for add mode take inputs from the user regarding apps and passwords that he/she want to store in system
-- for view mode first display the encoded file and then ask for master password
-- this master password further displays the decoded file
-- also store info onapps and passwords for future use
-- for clear mode simply clear the file
-_ for quit mode exit the system
-
-'''
+''' Creating A Password Manager '''
 
 ''' Modules '''
 
 import string
-import os
 
 ''' Functions '''
 
@@ -315,3 +303,5 @@ with open('05_decoded_file.txt','r+') as f:
             f.truncate(0)
 
 store_data(app_list,pwd_list)
+
+'''---------------------------------------End of code---------------------------------------'''
