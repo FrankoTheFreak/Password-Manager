@@ -5,6 +5,7 @@
 ''' Modules '''
 
 import string
+import os
 
 ''' Functions '''
 
@@ -67,24 +68,24 @@ def view(app_list,pwd_list):
     remove_contents()
     # check for previously stored data  
     # --> for apps 
-    file = os.stat("05_apps.txt").st_size
+    file = os.stat("apps.txt").st_size
     if file == 0:
         # file is empty 
         pass
     else:
-        with open('05_apps.txt','r+') as file:
+        with open('apps.txt','r+') as file:
             for line in file:
                 line = line.rstrip()
                 if line not in app_list:
                     app_list.append(line)
 
     # --> for pwds 
-    file = os.stat("05_pwds.txt").st_size
+    file = os.stat("pwds.txt").st_size
     if file == 0:
         # file is empty 
         pass
     else:
-        with open('05_pwds.txt','r+') as file:
+        with open('pwds.txt','r+') as file:
             for line in file:
                 line = line.rstrip()
                 if line not in pwd_list:
@@ -94,7 +95,7 @@ def view(app_list,pwd_list):
     e_app_list,e_pwd_list = encrypter(app_list,pwd_list)
 
     # display encoded file to user s
-    with open('05_encoded_file.txt','r+') as f:
+    with open('encoded_file.txt','r+') as f:
         f.write('\t------------------\n')
         f.write('\t|  Encoded File  |\n')
         f.write('\t------------------\n')
@@ -114,7 +115,7 @@ def view(app_list,pwd_list):
     if master_pwd == 'mane':
         d_app_list,d_pwd_list = decrypter(e_app_list,e_pwd_list)
         # display decoded file to user
-        with open('05_decoded_file.txt','r+') as f:
+        with open('decoded_file.txt','r+') as f:
             f.write('\t------------------\n')
             f.write('\t|  Decoded File  |\n')
             f.write('\t------------------\n')
@@ -245,13 +246,13 @@ def decrypter(e_app_list,e_pwd_list):
 # CLEAR MODE 
 def clear(app_list,pwd_list):
 
-    with open('05_apps.txt','r+') as f:
+    with open('apps.txt','r+') as f:
         f.truncate(0)
-    with open('05_pwds.txt','r+') as f:
+    with open('pwds.txt','r+') as f:
         f.truncate(0)
-    with open('05_encoded_file.txt','r+') as f:
+    with open('encoded_file.txt','r+') as f:
         f.truncate(0)
-    with open('05_decoded_file.txt','r+') as f:
+    with open('decoded_file.txt','r+') as f:
         f.truncate(0)
     
     app_list.clear()
@@ -262,19 +263,19 @@ def clear(app_list,pwd_list):
 # STORE DATA
 def store_data(app_list,pwd_list):
 
-    with open('05_apps.txt','r+') as f:
+    with open('apps.txt','r+') as f:
         for i in range(0,len(app_list)):
             f.write(f'{app_list[i]}\n')
 
-    with open('05_pwds.txt','r+') as f:
+    with open('pwds.txt','r+') as f:
         for i in range(0,len(pwd_list)):
             f.write(f'{pwd_list[i]}\n')
 
 def remove_contents():
 
-    with open('05_encoded_file.txt','r+') as f:
+    with open('encoded_file.txt','r+') as f:
         f.truncate(0)
-    with open('05_decoded_file.txt','r+') as f:
+    with open('decoded_file.txt','r+') as f:
         f.truncate(0)
 
 ''' Main Code '''
@@ -297,9 +298,9 @@ while temp == True:
         break
 
 # clears the files before exiting the system
-with open('05_encoded_file.txt','r+') as f:
+with open('encoded_file.txt','r+') as f:
             f.truncate(0)
-with open('05_decoded_file.txt','r+') as f:
+with open('decoded_file.txt','r+') as f:
             f.truncate(0)
 
 store_data(app_list,pwd_list)
